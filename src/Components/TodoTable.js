@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import TextField from '@mui/material/TextField';
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
@@ -20,7 +19,7 @@ import Typography from '@mui/material/Typography';
 
 const TodoTable = () => {
 
-    const[timetaken, setTimetaken] = useState(0)
+    
     const todoList = useSelector(addedTodoList)
     const dispatch = useDispatch()
 
@@ -113,7 +112,7 @@ const TodoTable = () => {
 
 
 
-            <TableContainer sx={{ minWidth: 700, mt: 15 }} component={Paper}>
+            <TableContainer sx={{ minWidth: 700, mt: 5 }} component={Paper}>
                 <Typography
                     gutterBottom
                     variant="h4"
