@@ -6,23 +6,25 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { TextField } from "@mui/material";
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import { useSelector } from 'react-redux';
 import { addedTodoList } from '../features/todoSlice';
 import { useDispatch } from 'react-redux';
-import { setCompledStatus, setdeletedStatus } from '../features/todoSlice';
+import {setCompledStatus, setdeletedStatus } from '../features/todoSlice';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 
 
 const TodoTable = () => {
 
-    
+
     const todoList = useSelector(addedTodoList)
     const dispatch = useDispatch()
-
+   
+    
     const handleComplete = (index) => {
         dispatch(setCompledStatus(index));
 
@@ -80,7 +82,24 @@ const TodoTable = () => {
                             <TableRow key={raw.id}>
                                 <TableCell align="left">{raw.id}</TableCell>
                                 <TableCell align="left"> {raw.task}</TableCell>
-                                {/* <TableCell align="left"> {raw.timetaken}</TableCell>                                */}
+                                {/* <TableCell align="left">
+                                    {" "}
+                                    {raw.updatedOn ? (
+                                        <div>{raw.timetaken}</div>
+                                    ) : (
+                                        <TextField
+                                            id="outlined-basic"
+                                            label="Time Taken"
+                                            variant="outlined"
+                                            placeholder="00:00:00"
+                                            sx={{ boxSizing: "50%" }}
+                                            onChange={handleTimetaken}
+                                            value={raw.timetaken === 0 ? "00:00:00" : raw.timetaken}
+                                            margin="none"
+                                        />
+                                    )}
+
+                                </TableCell>                                 */}
                                 <TableCell align="right">{raw.completed ? "Completed" : "Pending"}</TableCell>
                                 {/* <TableCell align="right">{raw.updatedon}</TableCell> */}
                                 <TableCell align="right">
@@ -128,7 +147,7 @@ const TodoTable = () => {
                             <StyledTableCell>Task Name</StyledTableCell>
                             {/* <StyledTableCell align="right">Time Taken</StyledTableCell> */}
                             <StyledTableCell align="right">Completed</StyledTableCell>
-                            {/* <StyledTableCell align="right">Updated On</StyledTableCell> */}
+                            <StyledTableCell align="right">Updated On</StyledTableCell>
                             <StyledTableCell align="right">Actions</StyledTableCell>
                         </TableRow>
                     </TableHead>
@@ -139,7 +158,7 @@ const TodoTable = () => {
                                 <StyledTableCell component="th" scope="row">{row.task} </StyledTableCell>
                                 {/* <StyledTableCell align="right">{row.timetaken}</StyledTableCell> */}
                                 <StyledTableCell align="right">{row.completed ? "Completed" : "Pending"}</StyledTableCell>
-                                {/* <StyledTableCell align="right">{row.updatedon}</StyledTableCell> */}
+                                <StyledTableCell align="right">{row.updatedon}</StyledTableCell>
                                 <StyledTableCell align="right">
                                     <IconButton
                                         edge="end"

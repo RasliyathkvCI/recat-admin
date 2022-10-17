@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import moment from "moment"
 //Concept
 //const [todoList,setTodolist]=useState([])
 //setTodoList(action)
@@ -15,10 +16,13 @@ const todoSlice = createSlice({
         saveTodo: (state, action) => {
             state.todoList.push(action.payload)
         },
+      
         setCompledStatus:(state,action)=>{
             state.todoList.map(raw =>{
                 if(action.payload === raw.id){
-                    raw.completed= true
+                    raw.completed = true
+                    raw.updatedon = moment().format("DD-MM-YYYY, h:mm:ss a");
+                    
                 }
             })
         },
@@ -26,6 +30,7 @@ const todoSlice = createSlice({
              state.todoList.map(raw =>{
                 if(action.payload === raw.id){
                     raw.deletedstatus = true
+                    
                 }
              })
         }
